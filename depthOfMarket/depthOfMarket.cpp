@@ -4,10 +4,9 @@
 
 #include "depthOfMarket.h"
 
-//
+// adds line to depthOfMarket by given parameters: forSale, price, volume
 int depthOfMarket::addLine(int forSale, double price, int volume) {
     if (forSale) {
-//        std::pair<std::map<double,int>::iterator,bool> element;
         auto element = linesForSale.insert(std::make_pair(price, volume));
         if (element.second == false) {
             std::cout << "no new line was insert" << std::endl;
@@ -57,11 +56,11 @@ int depthOfMarket::deleteLine(int forSale, double price) {
 
 //  prints all lines in the depthOfMarket
 const void depthOfMarket::print() {
-    for (std::map<double, int>::reverse_iterator it = linesForPurchase.rbegin(); it != linesForPurchase.rend(); ++it) {
-        std::cout << "Покупка " << (*it).first << " " << (*it).second << std::endl;
-    }
     for (std::map<double, int>::reverse_iterator it = linesForSale.rbegin(); it != linesForSale.rend(); ++it) {
         std::cout << "Продажа " << (*it).first << " " << (*it).second << std::endl;
+    }
+    for (std::map<double, int>::reverse_iterator it = linesForPurchase.rbegin(); it != linesForPurchase.rend(); ++it) {
+        std::cout << "Покупка " << (*it).first << " " << (*it).second << std::endl;
     }
     std::cout << "________________________________________________" << std::endl;
 };
