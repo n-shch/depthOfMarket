@@ -26,6 +26,8 @@ add_subdirectory(test)
 file(GLOB sources
         "${PROJECT_SOURCE_DIR}/depthOfMarket/*.cpp"
         "${PROJECT_SOURCE_DIR}/depthOfMarket/*.h"
+        "${PROJECT_SOURCE_DIR}/perrformanceTools/*.cpp"
+        "${PROJECT_SOURCE_DIR}/perrformanceTools/*.h"
         "${PROJECT_SOURCE_DIR}/main.cpp"
         )
 
