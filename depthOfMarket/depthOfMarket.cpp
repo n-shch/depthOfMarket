@@ -10,7 +10,7 @@ int depthOfMarket::addLine(int forSale, double price, int volume) {
         auto element = linesForSale.insert(std::make_pair(price, volume));
         if (element.second == false) {
             std::cout << "no new line was insert" << std::endl;
-            std::cout << " lines already exists with a price of " << element.first->second << std::endl;
+            std::cout << " lines already exists with a price of " << element.first->first << std::endl;
             return -1;
         }
         return 0;
@@ -18,7 +18,7 @@ int depthOfMarket::addLine(int forSale, double price, int volume) {
     auto element = linesForPurchase.insert(std::make_pair(price, volume));
     if (element.second == false) {
         std::cout << "no new line was insert" << std::endl;
-        std::cout << " lines already exists with a price of " << element.first->second << std::endl;
+        std::cout << " lines already exists with a price of " << element.first->first << std::endl;
         return -1;
     }
     return 0;
@@ -64,6 +64,7 @@ const void depthOfMarket::print() {
     }
     std::cout << "________________________________________________" << std::endl;
 };
+
 //  Finds line in DepthOfMarket by given parameters: forSale, price
 const std::pair<std::map<double,int>::iterator,bool> depthOfMarket::findLine(int forSale, double price) {
     if (forSale) {
