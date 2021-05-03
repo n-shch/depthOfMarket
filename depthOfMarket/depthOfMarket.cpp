@@ -25,18 +25,23 @@ int depthOfMarket::addLine(bool forSale, double price, int volume) {
 };
 
 //  changes line by given parameters: forSale, price
-int depthOfMarket::changeLine(bool forSale, double price, int newVolume) {
+int depthOfMarket::changeLine(bool forSale, double price, bool newForSale, double newPrice, int newVolume) {
+    if (forSale != newForSale || newPrice != newPrice) {
+        this->deleteLine(forSale, price);
+        this->addLine(newForSale, newPrice, newVolume);
+        return 0;
+    }
     if (forSale) {
         if (linesForSale.find(price) != linesForSale.end()) {
             linesForSale[price] = newVolume;
             return 0;
         }
-        if (linesForPurchase.find(price) != linesForPurchase.end()) {
-            linesForPurchase[price] = newVolume;
-            return 0;
-        }
-        return -1;
     }
+    if (linesForPurchase.find(price) != linesForPurchase.end()) {
+        linesForPurchase[price] = newVolume;
+        return 0;
+    }
+    return -1;
 };
 
 // Deletes line by given parameters: forSale and price
