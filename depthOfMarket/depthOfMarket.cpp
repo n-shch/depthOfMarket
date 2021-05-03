@@ -17,8 +17,8 @@ int depthOfMarket::addLine(bool forSale, double price, int volume) {
     }
     auto element = linesForPurchase.insert(std::make_pair(price, volume));
     if (element.second == false) {
-        std::cout << "no new line was insert" << std::endl;
-        std::cout << " lines already exists with a price of " << element.first->first << std::endl;
+        std::cout << "no new line was insert:";
+        std::cout << " line already exists with a price of " << element.first->first << std::endl;
         return -1;
     }
     return 0;
