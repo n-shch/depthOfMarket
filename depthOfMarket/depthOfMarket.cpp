@@ -26,7 +26,7 @@ int depthOfMarket::addLine(bool forSale, double price, int volume) {
 
 //  changes line by given parameters: forSale, price
 int depthOfMarket::changeLine(bool forSale, double price, bool newForSale, double newPrice, int newVolume) {
-    if (forSale != newForSale || newPrice != newPrice) {
+    if (forSale != newForSale || price != newPrice) {
         this->deleteLine(forSale, price);
         this->addLine(newForSale, newPrice, newVolume);
         return 0;
