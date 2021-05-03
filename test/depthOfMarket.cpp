@@ -43,10 +43,10 @@ TEST(changeLine, change_non_existing_line_data) {
     auto a = depthOfMarket();
     auto res = a.changeLine(1,1,20,0,1);
 //    Проверим, что функция завершилась c ошибкой
-    ASSERT_EQ(res, -1);
-    auto b = a.findLine(1,1);
-//    Проверим, что в мы не нашли элемент
-    ASSERT_EQ(b.second, 0);
+    ASSERT_EQ(res, 0);
+    auto b = a.findLine(1,0);
+//    Проверим, что в мы действительно вставили элемент
+    ASSERT_EQ(b.second, 1);
 }
 
 TEST(deleteLine, delete_valid_line) {

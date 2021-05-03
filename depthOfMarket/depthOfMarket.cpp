@@ -24,7 +24,8 @@ int depthOfMarket::addLine(bool forSale, double price, int volume) {
     return 0;
 };
 
-//  changes line by given parameters: forSale, price
+//  changes line by given parameters: forSale, price, newForSale, newPrice, newVolume
+//  if the given line does not exist, creates new line by given parameters
 int depthOfMarket::changeLine(bool forSale, double price, bool newForSale, double newPrice, int newVolume) {
     if (forSale != newForSale || price != newPrice) {
         this->deleteLine(forSale, price);
@@ -41,7 +42,6 @@ int depthOfMarket::changeLine(bool forSale, double price, bool newForSale, doubl
         linesForPurchase[price] = newVolume;
         return 0;
     }
-    return -1;
 };
 
 // Deletes line by given parameters: forSale and price
