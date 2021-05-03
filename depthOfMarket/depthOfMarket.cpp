@@ -5,7 +5,7 @@
 #include "depthOfMarket.h"
 
 // adds line to depthOfMarket by given parameters: forSale, price, volume
-int depthOfMarket::addLine(int forSale, double price, int volume) {
+int depthOfMarket::addLine(bool forSale, double price, int volume) {
     if (forSale) {
         auto element = linesForSale.insert(std::make_pair(price, volume));
         if (element.second == false) {
@@ -25,7 +25,7 @@ int depthOfMarket::addLine(int forSale, double price, int volume) {
 };
 
 //  changes line by given parameters: forSale, price
-int depthOfMarket::changeLine(int forSale, double price, int newVolume) {
+int depthOfMarket::changeLine(bool forSale, double price, int newVolume) {
     if (forSale) {
         if (linesForSale.find(price) != linesForSale.end()) {
             linesForSale[price] = newVolume;
@@ -40,7 +40,7 @@ int depthOfMarket::changeLine(int forSale, double price, int newVolume) {
 };
 
 // Deletes line by given parameters: forSale and price
-int depthOfMarket::deleteLine(int forSale, double price) {
+int depthOfMarket::deleteLine(bool forSale, double price) {
     if (forSale) {
         if (linesForSale.find(price) != linesForSale.end()) {
             linesForSale.erase(price);
@@ -66,7 +66,7 @@ const void depthOfMarket::print() {
 };
 
 //  Finds line in DepthOfMarket by given parameters: forSale, price
-const std::pair<std::map<double,int>::iterator,bool> depthOfMarket::findLine(int forSale, double price) {
+const std::pair<std::map<double,int>::iterator,bool> depthOfMarket::findLine(bool forSale, double price) {
     if (forSale) {
         auto element = linesForSale.find(price);
         if (element != linesForSale.end()) {

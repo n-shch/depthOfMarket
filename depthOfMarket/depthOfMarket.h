@@ -14,10 +14,10 @@ public:
     depthOfMarket() {};
     ~depthOfMarket() {};
 public:
-    int addLine(int forSale, double price, int volume);
-    int changeLine(int forSale, double price, int newVolume);
-    int deleteLine(int forSale, double price);
-    const std::pair<std::map<double,int>::iterator,bool> findLine(int forSale, double price);
+    int addLine(bool forSale, double price, int volume);
+    int changeLine(bool forSale, double price, int newVolume);
+    int deleteLine(bool forSale, double price);
+    const std::pair<std::map<double,int>::iterator,bool> findLine(bool forSale, double price);
     const void print();
 private:
     std::map<double, int> linesForSale;
